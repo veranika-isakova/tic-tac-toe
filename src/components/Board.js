@@ -1,10 +1,14 @@
 import React, { PureComponent } from 'react'
 import Square from './Square';
+import { connect } from 'react-redux'
+import click from '../actions/click'
 
 class Board extends PureComponent {
-
   renderSquare(i) {
-    return <Square value={i} />; // to pass a value prop to the Square and then pass the value to Square component
+    return <Square
+      value={this.props.squares[i]}
+      onClick={() => this.props.save(i)} //value and onClick - props
+    />;
   }
   render() {
     const status = 'Next player: X';
@@ -32,4 +36,11 @@ class Board extends PureComponent {
   }
 }
 
-export default Board
+const mapStateToProps = (state) => {
+  return { // props - what component should show
+    squares: state.squares
+  }
+}
+
+const mapDispatchToProps = { save: click }
+export default connect(mapStateToProps, mapDispatchToProps)(Board)// connect component to redux
