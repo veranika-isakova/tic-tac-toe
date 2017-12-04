@@ -4,7 +4,7 @@ class Square extends PureComponent {
   render() {
     return(
       <button className="square">
-        {  }
+        {this.props.value}
       </button>
     )
   }

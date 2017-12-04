@@ -4,7 +4,7 @@ import Square from './Square';
 class Board extends PureComponent {
 
   renderSquare(i) {
-    return <Square/>;
+    return <Square value={i} />; // to pass a value prop to the Square and then pass the value to Square component
   }
   render() {
     const status = 'Next player: X';
